@@ -1,6 +1,7 @@
 from random import randint, sample
 
 def pickFromBigNumbers(n_desired=-1):
+    # build set of big numbers {25, 50, 75,100]}
     big_numbers = [25, 50, 75,100]
 
     # choose randomly when no value is specified
@@ -11,6 +12,8 @@ def pickFromBigNumbers(n_desired=-1):
 
 
 def pickFromSmallNumbers(n_desired):
+    # build set of small numbers
+    # {1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10}
     smalls_numbers = [ i for i in list(range(1,10+1)) for _ in range(2) ]
 
     return sample(smalls_numbers, n_desired)
