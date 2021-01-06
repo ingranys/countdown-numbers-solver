@@ -69,6 +69,15 @@ def parse():
         default="unique",
         help="the solutions to output, (default is 'unique')"
     )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        type=int,
+        nargs="?",
+        choices=range(0,3),
+        default=0,
+        help="the verbose level for logging, (default is 0)"
+    )
     args = parser.parse_args()
 
     return args
