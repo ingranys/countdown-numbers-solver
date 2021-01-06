@@ -34,7 +34,8 @@ def check(numbers,expressions,target,solutions,approximations,tolerance=10,use='
 
         ## look for an approximate solution
         for number in numbers:
-            if number in list(range(target - tolerance,target + tolerance + 1)):
+            ## consider approximate solution that are not exact solution (number must be different from target)
+            if (number in list(range(target - tolerance,target + tolerance + 1))) and (number!=target):
                 approx_index = numbers.index(number)
                 approximation = '{0} = {1}'.format(expressions[approx_index],numbers[approx_index])
                 approximations.append(approximation)
