@@ -1,9 +1,61 @@
-def log(obj, msg):
-    print('\n>>> {0} {1}'.format(msg.upper(), obj))
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
+""" Custom logger for countdown.
+
+For more information, see README.
+
+For usage, use help menu <python3 countdown.py -h>.
+
+Project can be found here <https://github.com/ingranys/countdown-numbers-solver>.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <http://www.gnu.org/licenses/>.
+"""
+
+__author__ = "ingranys"
+__contact__ = "ingranys@protonmail.com"
+__copyright__ = "Copyright 2021, Mustapha Gaies, Toulouse (France)"
+__date__ = "2021/01/07"
+__deprecated__ = False
+__email__ =  "ingranys@protonmail.com"
+__license__ = "GPLv3"
+__maintainer__ = "developer"
+__status__ = "Production"
+__version__ = "0.4.0"
+
+
+def log(title: str, obj):
+    """
+    Print information to the console.
+
+    Args:
+        title (str): Title to be printed.
+        obj :  Object to be printed.  
+    """
+    print('\n>>> {0} {1}'.format(title.upper(), obj))
 
 
 def parameters(args,debug=False):
+    """
+    Print meaningful information about given arguments.
+
+    Args:
+        args (argparse.Namespace): Object containing parsed arguments.
+        debug (bool, optional): Enable DEBUG mode. Defaults to False.
+
+    Raises:
+        ValueError: In case that unexpected argument value is encountered.
+    """
     print('\n>>> PARAMETERS')
     
     # numbers info and size info

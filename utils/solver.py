@@ -1,3 +1,40 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+""" Countdown Numbers Game solver.
+
+For more information, see README.
+
+For usage, use help menu <python3 countdown.py -h>.
+
+Project can be found here <https://github.com/ingranys/countdown-numbers-solver>.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <http://www.gnu.org/licenses/>.
+"""
+
+__author__ = "ingranys"
+__contact__ = "ingranys@protonmail.com"
+__copyright__ = "Copyright 2021, Mustapha Gaies, Toulouse (France)"
+__date__ = "2021/01/07"
+__deprecated__ = False
+__email__ =  "ingranys@protonmail.com"
+__license__ = "GPLv3"
+__maintainer__ = "developer"
+__status__ = "Production"
+__version__ = "0.4.0"
+
+
+# lamdba functions
 add = lambda a,b: a+b
 sub = lambda a,b: a-b if a>b else None
 osub = lambda a,b: b-a if b>a else None
@@ -5,7 +42,7 @@ mul = lambda a,b: a*b
 div = lambda a,b: a//b if a % b == 0 else None
 idiv = lambda a,b: b//a if b % a == 0 else None
 
-
+# available operation
 operations = [ (add, '+',   '({0} + {1})'),
                (sub, '-',   '({0} - {1})'),
                (osub,'^-', '({1} - {0})'),
@@ -14,8 +51,25 @@ operations = [ (add, '+',   '({0} + {1})'),
                (idiv, '^/', '({1} / {0})')]
 
 
-# check if numbers contain a solution (either exact or approximate)
 def check(numbers,expressions,target,solutions,approximations,tolerance=10,use='some',verbose=False,stage=''):
+    """
+    Check if numbers contain a solution (either exact or approximate).
+    When a solution is encountered, add to the list (either 'solutions' for exact solutions or 'approximatations' for approximate solutions).
+
+    Args:
+        numbers (list[int]): List of numbers to checked.
+        expressions (list[str]): List of corresponding mathematical expressions.
+        target (int): Target value, a number is a solution if close enough to target.
+        solutions (list[str]): List of exact solutions.
+        approximations (list[str]): List of approximate solutions.
+        tolerance (int, optional): Tolerance range when looking for approximate solutions. Defaults to 10.
+        use (str, optional): Rule for numbers to be used. Defaults to 'some'.
+        verbose (bool, optional): Enable DEBUG mode. Defaults to False.
+        stage (str, optional): Log level ('--- ', '------ ', '--------- ' and so on). Defaults to ''.
+
+    Raises:
+        ValueError: In case that unexpected argument value is encountered.
+    """
 
     # enforce rule on number usage before checking numbers for a potential solution
     ## use='some' > we can look for a solution no matter how many numbers are remaining
@@ -49,7 +103,20 @@ def check(numbers,expressions,target,solutions,approximations,tolerance=10,use='
 
 # most of the job is done here
 def recurse(numbers,expressions,target,solutions,approximations,tolerance=10,use='some',verbose=False,stage=''):
-    
+    """
+
+    Args:
+        numbers (list[int]): List of input numbers to used.
+        expressions ([type]): List of mathematical expressions for numbers.
+        target (int): Target value, the goal is to reach that value.
+        solutions ([type]): List that will contain exact solutions.
+        approximations ([type]): List that will contain approximate solutions.
+        tolerance (int, optional): Tolerance range when looking for approximate solutions. Defaults to 10.
+        use (str, optional): Rule for numbers to be used. Defaults to 'some'.
+        verbose (bool, optional): Enable DEBUG mode. Defaults to False.
+        stage (str, optional): Log level ('--- ', '------ ', '--------- ' and so on). Defaults to ''.
+    """
+
     n_numbers = len(numbers)            # will be useful to implement loops over number
     new_stage = stage.strip() + '--- '  # crank up log level at each recursive call
 
@@ -111,6 +178,22 @@ def recurse(numbers,expressions,target,solutions,approximations,tolerance=10,use
 
 # start solver
 def solve(numbers,target,tolerance=10,use='some',verbose=False):
+    """
+    Start solver.
+    Initialize lists that will contain mathematical expressions and solutions.
+    Launch the first recursive call of all.
+
+
+    Args:
+        numbers (list[int]): List of input numbers to used.
+        target (int): Target value, the goal is to reach that value.
+        tolerance (int, optional): Tolerance range when looking for approximate solutions. Defaults to 10.
+        use (str, optional): Rule for numbers to be used. Defaults to 'some'.
+        verbose (bool, optional): Enable DEBUG mode. Defaults to False.
+
+    Returns:
+        (list[int],list[int]): List of solutions (exact solutions and approximate solutions).
+    """
 
     # initialize lists for results
     expressions = numbers[:]
