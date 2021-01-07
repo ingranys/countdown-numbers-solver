@@ -10,8 +10,8 @@ def parameters(args,debug=False):
     if args.numbers:
         print('Input number(s) : {0}.'.format(args.numbers))
     else:
-        print('Input number(s) : '\
-            'None given (numbers will be picked randomly).')
+        print('Input number(s) :'\
+            ' None given (numbers will be picked randomly).')
     
     # size info
     print('The first {0} number(s) will be considered.'.format(args.size))
@@ -24,17 +24,17 @@ def parameters(args,debug=False):
         print('We are looking for exact solutions only.')
     elif  args.solutions.upper() == 'APPROXIMATE':
         print('We are looking for exact and approximate solutions' \
-                'tolerance is {0}).'.format(args.tolerance))
+                ' (tolerance is {0}).'.format(args.tolerance))
     else :
         pass
 
     # output
     if args.output.upper() == 'UNIQUE':
         print('We will filter duplicates and display unique solutions' \
-                '(the order of the operations is ignored).')    
+                ' (the order of the operations is ignored).')    
     elif args.output.upper() == 'ALL':
         print('We will display all solutions, even duplicates' \
-                '(the order of the operations will differ).')
+                ' (the order of the operations will differ).')
     else:
         pass
 
