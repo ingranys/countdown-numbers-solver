@@ -24,7 +24,7 @@ def parameters(args,debug=False):
         print('We are looking for exact and approximate solutions' \
                 ' (tolerance is {0}).'.format(args.tolerance))
     else :
-        pass
+        raise ValueError('Unexpected value for the argument <solutions> : {0}'.format(args.solutions))
 
     # output
     if args.output.upper() == 'UNIQUE':
@@ -33,7 +33,7 @@ def parameters(args,debug=False):
         print('We will display all solutions, even duplicates' \
                 ' (operations order will differ).')
     else:
-        pass
+        raise ValueError('Unexpected value for the argument <output> : {0}'.format(args.output))
 
     # verbose info    
     if args.verbose == 0:
@@ -41,9 +41,10 @@ def parameters(args,debug=False):
     elif args.verbose == 1:
         print('DEBUG mode has been enabled.')    
     elif args.verbose == 2:
-        print('SPAM mode has been enabled!')    
+        print('DEBUG mode has been enabled.')
+        print('!!!SPAM mode has been enabled!!!')    
     else:
-        pass
+        raise ValueError('Unexpected value for the argument <verbose> : {0}'.format(args.verbose))
 
     # show technical details if DEBUG mode is enabled
     if debug:

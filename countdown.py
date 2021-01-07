@@ -6,24 +6,6 @@
 # you may not use this file except in compliance with the License.
 #
 
-
-
-### Interesting Examples 
-## Many cases
-#numbers = [8,3,2,9,7,5]
-#target = 905
-## Only off-by-1 answers
-#numbers = [100,75,50,25,1,3]
-#target = 823
-## Many answers
-#numbers = [50,75,25,5,4,9]
-#target = 201
-## Only one answer
-#numbers = [9,3,5,3,2,4]
-#target = 669
-## Compare http://www.maths-resources.com/countdown/index.html
-
-
 from utils.parser import parse
 from utils.selector import pick
 from utils.solver import check, recurse, solve
