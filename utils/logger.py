@@ -30,11 +30,10 @@ def parameters(args,debug=False):
 
     # output
     if args.output.upper() == 'UNIQUE':
-        print('We will filter duplicates and display unique solutions' \
-                ' (the order of the operations is ignored).')    
+        print('We will filter duplicates and display unique solutions.')    
     elif args.output.upper() == 'ALL':
         print('We will display all solutions, even duplicates' \
-                ' (the order of the operations will differ).')
+                ' (operations order will differ).')
     else:
         pass
 
