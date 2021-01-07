@@ -10,8 +10,8 @@ operations = [ (add, '+',   '({0} + {1})'),
                (sub, '-',   '({0} - {1})'),
                (osub,'^-', '({1} - {0})'),
                (mul, '*',   '({0} * {1})'),
-               (div, '/',   '({0} * {1})'),
-               (idiv, '^/', '({1} * {0})')]
+               (div, '/',   '({0} / {1})'),
+               (idiv, '^/', '({1} / {0})')]
 
 
 # check if numbers contain a solution (either exact or approximate)
