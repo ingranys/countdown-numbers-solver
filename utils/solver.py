@@ -30,7 +30,7 @@ def check(numbers,expressions,target,solutions,approximations,tolerance=10,use='
             target_index = numbers.index(target)
             solution = '{0} = {1}'.format(expressions[target_index],numbers[target_index])
             solutions.append(solution)
-            print('{0} EXACT SOLUTION : {1}'.format(stage,solution)) if verbose else False
+            print('{0} EXACT SOLUTION FOUND : {1}'.format(stage,solution)) if verbose else False
 
         ## look for an approximate solution
         for number in numbers:
@@ -39,7 +39,7 @@ def check(numbers,expressions,target,solutions,approximations,tolerance=10,use='
                 approx_index = numbers.index(number)
                 approximation = '{0} = {1}'.format(expressions[approx_index],numbers[approx_index])
                 approximations.append(approximation)
-                print('{0} APPROXIMATE SOLUTION : {1}'.format(stage,approximation)) if verbose else False
+                print('{0} APPROXIMATE SOLUTION FOUND : {1}'.format(stage,approximation)) if verbose else False
     
     else:
         # unexpected value for use argument (should be 'some' or 'all')
