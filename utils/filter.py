@@ -8,9 +8,15 @@ def output(values,displayname='',output='unique',debug=False):
 
     # output all solutions when required > EASY!
     if output.upper() == 'ALL':
-        print('\n>>> ALL {0}'.format(displayname.upper()))        
-        for value in values:
-            print(value)
+        print('\n>>> ALL {0}'.format(displayname.upper()))
+        # verify if empty        
+        if values:   
+            for value in values:
+                print(value)
+        else:
+            # print default message whem empty
+            print('None found...')
+
 
     # output needs to be unique values > ROUGH! 
     ## values might be different but still refering to the same set of operations
@@ -41,8 +47,13 @@ def output(values,displayname='',output='unique',debug=False):
         if debug:
             print('--------/DEBUG---------')
 
-        # done < print unique solutions now
-        for _ ,value in unambiguous_solutions.items():
-            print(value)    
+        
+        # done > verify not empty and print unique solutions now
+        if unambiguous_solutions:
+            for _ ,value in unambiguous_solutions.items():
+                print(value)    
+        else :
+            # print default message whem empty
+            print('None found...')
     else:
         False
