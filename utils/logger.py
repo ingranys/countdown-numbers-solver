@@ -6,15 +6,13 @@ def log(obj, msg):
 def parameters(args,debug=False):
     print('\n>>> PARAMETERS')
     
-    # numbers info
+    # numbers info and size info
     if args.numbers:
         print('Input number(s) : {0}.'.format(args.numbers))
+        print('The first {0} number(s) will be considered.'.format(args.size))
     else:
         print('Input number(s) :'\
             ' None given (numbers will be picked randomly).')
-    
-    # size info
-    print('The first {0} number(s) will be considered.'.format(args.size))
     
     # target and use info
     print('The goal is to reach {0} using {1} numbers.'.format(args.target,args.use))
@@ -30,11 +28,10 @@ def parameters(args,debug=False):
 
     # output
     if args.output.upper() == 'UNIQUE':
-        print('We will filter duplicates and display unique solutions' \
-                ' (the order of the operations is ignored).')    
+        print('We will filter duplicates and display unique solutions.')    
     elif args.output.upper() == 'ALL':
         print('We will display all solutions, even duplicates' \
-                ' (the order of the operations will differ).')
+                ' (operations order will differ).')
     else:
         pass
 
