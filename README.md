@@ -1,8 +1,14 @@
 # countdown-numbers-solver
+
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)]
+
 A Python implementation of a solver for [Countdown Numbers Game, ](https://en.wikipedia.org/wiki/Countdown_(game_show)#Numbers_round) including a wide variety of options.
 
-As a reminder here is a **game demo**
-<img src="https://github.com/ingranys/countdown-numbers-solver/blob/master/visuals/countdown.gif">
+As a reminder here is a **game demo**:
+
+<p align="center">
+  <img src="https://github.com/ingranys/countdown-numbers-solver/blob/main/visuals/countdown.gif" align="center" height="350">
+</p>
 
 Want to have fun? [:point_right:Play the game:point_left:](https://incoherency.co.uk/countdown/practice/#numbers)
 
@@ -65,7 +71,33 @@ $ python3 countdown.py -n 100 25 10 3 2 1 -t 784
   ((100 - 2) * (10 - (3 - 1))) = 784
   (((100 - 3) + 1) * (10 - 2)) = 784
   ```
-</details>
+</details><br />
+
+Run script with numbers and a target and **enforce the use of all number**.
+```
+$ python3 countdown.py -n 100 25 10 3 2 1 -t 784 -u all
+```
+<details>
+  <summary>:heavy_plus_sign: See output</summary>
+  
+  ```
+  
+  >>> PARAMETERS
+  Input number(s) : [100, 25, 10, 3, 2, 1].
+  The first 6 number(s) will be considered.
+  The goal is to reach 784 using all numbers.
+  We are looking for exact solutions only.
+  We will filter duplicates and display unique solutions.
+
+  >>> START NUMBERS [100, 25, 10, 3, 2, 1]
+
+  >>> TARGET 784
+
+  >>> UNIQUE EXACT SOLUTIONS
+  ((100 + ((25 - 1) / 2)) * (10 - 3)) = 784
+  ((100 - 2) * (((10 + 1) * 3) - 25)) = 784
+  ```
+</details><br />
 
 Run script **without providing numbers or a target** (solver will _generate random values instead_).
 ```
@@ -96,11 +128,11 @@ $ python3 countdown.py
   ((9 * ((10 * 5) + (4 * 3))) + 1) = 559
   (((((9 + 3) * 5) - 4) * 10) - 1) = 559
   ```
-</details>
+</details><br />
 
 Run script and look for **approximate answers as well**.
 ```
-$ python3 countdown.py
+$ python3 countdown.py -n 100 75 50 25 1 3 -t 823 -s approximate --tolerance 1 -o unique
 ```
 <details>
   <summary>:heavy_plus_sign: See ouput</summary>
@@ -108,26 +140,370 @@ $ python3 countdown.py
   ```
   
   >>> PARAMETERS
-  Input number(s) : None given (6 numbers will be picked randomly).
-  The goal is to reach 559 using some numbers.
-  We are looking for exact solutions only.
-  We will filter duplicates and display unique solutions (the order of the operations is ignored).
+  Input number(s) : [100, 75, 50, 25, 1, 3].
+  The first 6 number(s) will be considered.
+  The goal is to reach 823 using some numbers.
+  We are looking for exact and approximate solutions (tolerance is 1).
+  We will filter duplicates and display unique solutions.
 
-  >>> START NUMBERS [9, 10, 4, 3, 5, 1]
+  >>> START NUMBERS [100, 75, 50, 25, 1, 3]
 
-  >>> TARGET 559
+  >>> TARGET 823
 
   >>> UNIQUE EXACT SOLUTIONS
-  (9 + (10 * (((4 * 3) - 1) * 5))) = 559
-  ((((9 + 5) * 4) * 10) - 1) = 559
-  (((9 - 1) + 5) * ((10 * 4) + 3)) = 559
-  (((((9 + 5) * 10) - 1) * 4) + 3) = 559
-  ((9 * (((4 * 3) * 5) + 1)) + 10) = 559
-  ((9 + 4) * ((10 * (5 - 1)) + 3)) = 559
-  ((9 * ((10 * 5) + (4 * 3))) + 1) = 559
-  (((((9 + 3) * 5) - 4) * 10) - 1) = 559
+  None found...
+
+  >>> UNIQUE APPROXIMATE SOLUTIONS
+  (((((100 / 25) * 50) + 75) - 1) * 3) = 822
+  (((((100 / 25) * 50) + 75) * 3) - 1) = 824
+  (((75 * (50 * (25 - 3))) / 100) - 1) = 824
+  (((75 * (25 - 3)) / (100 / 50)) - 1) = 824
+  (((((100 * 25) - 75) + 50) / 3) - 1) = 824
+  ((((100 * 25) - (75 - 50)) / 3) - 1) = 824
+  ((((100 * (75 - 50)) - 25) / 3) - 1) = 824
   ```
-</details>
+</details><br />
+
+Run script and enable **DEBUG mode**.
+```
+$ python3 countdown.py -n 25 100 1 7 1 5 -t 563 -v 1
+```
+<details>
+  <summary>:heavy_plus_sign: See ouput</summary>
+  
+  ```
+  
+  >>> PARAMETERS
+  Input number(s) : [25, 100, 1, 7, 1, 5].
+  The first 6 number(s) will be considered.
+  The goal is to reach 563 using some numbers.
+  We are looking for exact solutions only.
+  We will filter duplicates and display unique solutions.
+  DEBUG mode has been enabled.
+
+  ---------DEBUG---------
+  Technical details about args :
+  numbers [25, 100, 1, 7, 1, 5]
+  size 6
+  use some
+  target 563
+  solutions exact
+  tolerance 10
+  output unique
+  verbose 1
+  --------/DEBUG---------
+
+  >>> START NUMBERS [25, 100, 1, 7, 1, 5]
+
+  >>> TARGET 563
+
+  >>> UNIQUE EXACT SOLUTIONS
+  ---------DEBUG---------
+  SOLUTION | SIMPLIFIED EXPRESSION | EXPRESSION TREE
+  (((100 - 1) * 7) - ((25 + 1) * 5)) = 563 | -5*(1 + 25) + (100 + (-1)*1)*7 | Add(Mul(Integer(-1), Mul(Integer(5), Add(Integer(1), Integer(25)))), Mul(Integer(7), Add(Integer(100), Mul(Integer(-1), Integer(1)))))
+  --------/DEBUG---------
+  (((100 - 1) * 7) - ((25 + 1) * 5)) = 563
+
+  ```
+</details><br />
+
+Run script on a very simple example and enable SPAM mode to investigate how the solver works
+```
+$ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v 2
+```
+<details>
+  <summary>:heavy_plus_sign: See ouput</summary>
+  
+  ```
+  >>> PARAMETERS
+  Input number(s) : [100, 6, 10].
+  The first 6 number(s) will be considered.
+  The goal is to reach 104 using some numbers.
+  We are looking for exact and approximate solutions (tolerance is 5).
+  We will display all solutions, even duplicates (operations order will differ).
+  SPAM mode has been enabled!
+
+  ---------DEBUG---------
+  Technical details about args :
+  numbers [100, 6, 10]
+  size 6
+  use some
+  target 104
+  solutions approximate
+  tolerance 5
+  output all
+  verbose 2
+  --------/DEBUG---------
+
+  >>> START NUMBERS [100, 6, 10]
+
+  >>> TARGET 104
+  ---  APPROXIMATE SOLUTION : 100 = 100
+  ---  Current number(s) [100, 6, 10] corresponding to the following expression(s) [100, 6, 10]
+  ---  Apply operation (+) to numbers of indexes (i=0,j=1) in [100, 6, 10]
+  ---  Number(s) become(s) [106, 10] corresponding to the following expression(s) ['(100 + 6)', 10]
+  ------  APPROXIMATE SOLUTION : (100 + 6) = 106
+  ------  Current number(s) [106, 10] corresponding to the following expression(s) ['(100 + 6)', 10]
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [106, 10]
+  ------  Number(s) become(s) [116] corresponding to the following expression(s) ['((100 + 6) + 10)']
+  ---------  FINAL VALUE is [116] corresponding to this expression ['((100 + 6) + 10)']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [106, 10]
+  ------  Number(s) become(s) [96] corresponding to the following expression(s) ['((100 + 6) - 10)']
+  ---------  FINAL VALUE is [96] corresponding to this expression ['((100 + 6) - 10)']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [106, 10]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(10 - (100 + 6))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [106, 10]
+  ------  Number(s) become(s) [1060] corresponding to the following expression(s) ['((100 + 6) * 10)']
+  ---------  FINAL VALUE is [1060] corresponding to this expression ['((100 + 6) * 10)']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [106, 10]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((100 + 6) / 10)']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [106, 10]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(10 / (100 + 6))']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (-) to numbers of indexes (i=0,j=1) in [100, 6, 10]
+  ---  Number(s) become(s) [94, 10] corresponding to the following expression(s) ['(100 - 6)', 10]
+  ------  Current number(s) [94, 10] corresponding to the following expression(s) ['(100 - 6)', 10]
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [94, 10]
+  ------  Number(s) become(s) [104] corresponding to the following expression(s) ['((100 - 6) + 10)']
+  ---------  EXACT SOLUTION : ((100 - 6) + 10) = 104
+  ---------  FINAL VALUE is [104] corresponding to this expression ['((100 - 6) + 10)']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [94, 10]
+  ------  Number(s) become(s) [84] corresponding to the following expression(s) ['((100 - 6) - 10)']
+  ---------  FINAL VALUE is [84] corresponding to this expression ['((100 - 6) - 10)']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [94, 10]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(10 - (100 - 6))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [94, 10]
+  ------  Number(s) become(s) [940] corresponding to the following expression(s) ['((100 - 6) * 10)']
+  ---------  FINAL VALUE is [940] corresponding to this expression ['((100 - 6) * 10)']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [94, 10]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((100 - 6) / 10)']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [94, 10]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(10 / (100 - 6))']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (^-) to numbers of indexes (i=0,j=1) in [100, 6, 10]
+  ---  Number(s) become(s) [None, 10] corresponding to the following expression(s) ['(6 - 100)', 10]
+  ---  STOP. Unauthorized expression...
+  ---  Apply operation (*) to numbers of indexes (i=0,j=1) in [100, 6, 10]
+  ---  Number(s) become(s) [600, 10] corresponding to the following expression(s) ['(100 * 6)', 10]
+  ------  Current number(s) [600, 10] corresponding to the following expression(s) ['(100 * 6)', 10]
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [600, 10]
+  ------  Number(s) become(s) [610] corresponding to the following expression(s) ['((100 * 6) + 10)']
+  ---------  FINAL VALUE is [610] corresponding to this expression ['((100 * 6) + 10)']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [600, 10]
+  ------  Number(s) become(s) [590] corresponding to the following expression(s) ['((100 * 6) - 10)']
+  ---------  FINAL VALUE is [590] corresponding to this expression ['((100 * 6) - 10)']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [600, 10]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(10 - (100 * 6))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [600, 10]
+  ------  Number(s) become(s) [6000] corresponding to the following expression(s) ['((100 * 6) * 10)']
+  ---------  FINAL VALUE is [6000] corresponding to this expression ['((100 * 6) * 10)']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [600, 10]
+  ------  Number(s) become(s) [60] corresponding to the following expression(s) ['((100 * 6) / 10)']
+  ---------  FINAL VALUE is [60] corresponding to this expression ['((100 * 6) / 10)']
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [600, 10]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(10 / (100 * 6))']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (/) to numbers of indexes (i=0,j=1) in [100, 6, 10]
+  ---  Number(s) become(s) [None, 10] corresponding to the following expression(s) ['(100 / 6)', 10]
+  ---  STOP. Unauthorized expression...
+  ---  Apply operation (^/) to numbers of indexes (i=0,j=1) in [100, 6, 10]
+  ---  Number(s) become(s) [None, 10] corresponding to the following expression(s) ['(6 / 100)', 10]
+  ---  STOP. Unauthorized expression...
+  ---  Apply operation (+) to numbers of indexes (i=0,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [110, 6] corresponding to the following expression(s) ['(100 + 10)', 6]
+  ------  Current number(s) [110, 6] corresponding to the following expression(s) ['(100 + 10)', 6]
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [110, 6]
+  ------  Number(s) become(s) [116] corresponding to the following expression(s) ['((100 + 10) + 6)']
+  ---------  FINAL VALUE is [116] corresponding to this expression ['((100 + 10) + 6)']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [110, 6]
+  ------  Number(s) become(s) [104] corresponding to the following expression(s) ['((100 + 10) - 6)']
+  ---------  EXACT SOLUTION : ((100 + 10) - 6) = 104
+  ---------  FINAL VALUE is [104] corresponding to this expression ['((100 + 10) - 6)']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [110, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 - (100 + 10))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [110, 6]
+  ------  Number(s) become(s) [660] corresponding to the following expression(s) ['((100 + 10) * 6)']
+  ---------  FINAL VALUE is [660] corresponding to this expression ['((100 + 10) * 6)']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [110, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((100 + 10) / 6)']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [110, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 / (100 + 10))']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (-) to numbers of indexes (i=0,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [90, 6] corresponding to the following expression(s) ['(100 - 10)', 6]
+  ------  Current number(s) [90, 6] corresponding to the following expression(s) ['(100 - 10)', 6]
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [90, 6]
+  ------  Number(s) become(s) [96] corresponding to the following expression(s) ['((100 - 10) + 6)']
+  ---------  FINAL VALUE is [96] corresponding to this expression ['((100 - 10) + 6)']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [90, 6]
+  ------  Number(s) become(s) [84] corresponding to the following expression(s) ['((100 - 10) - 6)']
+  ---------  FINAL VALUE is [84] corresponding to this expression ['((100 - 10) - 6)']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [90, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 - (100 - 10))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [90, 6]
+  ------  Number(s) become(s) [540] corresponding to the following expression(s) ['((100 - 10) * 6)']
+  ---------  FINAL VALUE is [540] corresponding to this expression ['((100 - 10) * 6)']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [90, 6]
+  ------  Number(s) become(s) [15] corresponding to the following expression(s) ['((100 - 10) / 6)']
+  ---------  FINAL VALUE is [15] corresponding to this expression ['((100 - 10) / 6)']
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [90, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 / (100 - 10))']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (^-) to numbers of indexes (i=0,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [None, 6] corresponding to the following expression(s) ['(10 - 100)', 6]
+  ---  STOP. Unauthorized expression...
+  ---  Apply operation (*) to numbers of indexes (i=0,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [1000, 6] corresponding to the following expression(s) ['(100 * 10)', 6]
+  ------  Current number(s) [1000, 6] corresponding to the following expression(s) ['(100 * 10)', 6]
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [1000, 6]
+  ------  Number(s) become(s) [1006] corresponding to the following expression(s) ['((100 * 10) + 6)']
+  ---------  FINAL VALUE is [1006] corresponding to this expression ['((100 * 10) + 6)']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [1000, 6]
+  ------  Number(s) become(s) [994] corresponding to the following expression(s) ['((100 * 10) - 6)']
+  ---------  FINAL VALUE is [994] corresponding to this expression ['((100 * 10) - 6)']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [1000, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 - (100 * 10))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [1000, 6]
+  ------  Number(s) become(s) [6000] corresponding to the following expression(s) ['((100 * 10) * 6)']
+  ---------  FINAL VALUE is [6000] corresponding to this expression ['((100 * 10) * 6)']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [1000, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((100 * 10) / 6)']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [1000, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 / (100 * 10))']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (/) to numbers of indexes (i=0,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [10, 6] corresponding to the following expression(s) ['(100 / 10)', 6]
+  ------  Current number(s) [10, 6] corresponding to the following expression(s) ['(100 / 10)', 6]
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [10, 6]
+  ------  Number(s) become(s) [16] corresponding to the following expression(s) ['((100 / 10) + 6)']
+  ---------  FINAL VALUE is [16] corresponding to this expression ['((100 / 10) + 6)']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [10, 6]
+  ------  Number(s) become(s) [4] corresponding to the following expression(s) ['((100 / 10) - 6)']
+  ---------  FINAL VALUE is [4] corresponding to this expression ['((100 / 10) - 6)']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [10, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 - (100 / 10))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [10, 6]
+  ------  Number(s) become(s) [60] corresponding to the following expression(s) ['((100 / 10) * 6)']
+  ---------  FINAL VALUE is [60] corresponding to this expression ['((100 / 10) * 6)']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [10, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((100 / 10) / 6)']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [10, 6]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 / (100 / 10))']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (^/) to numbers of indexes (i=0,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [None, 6] corresponding to the following expression(s) ['(10 / 100)', 6]
+  ---  STOP. Unauthorized expression...
+  ---  Apply operation (+) to numbers of indexes (i=1,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [100, 16] corresponding to the following expression(s) [100, '(6 + 10)']
+  ------  APPROXIMATE SOLUTION : 100 = 100
+  ------  Current number(s) [100, 16] corresponding to the following expression(s) [100, '(6 + 10)']
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [100, 16]
+  ------  Number(s) become(s) [116] corresponding to the following expression(s) ['(100 + (6 + 10))']
+  ---------  FINAL VALUE is [116] corresponding to this expression ['(100 + (6 + 10))']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [100, 16]
+  ------  Number(s) become(s) [84] corresponding to the following expression(s) ['(100 - (6 + 10))']
+  ---------  FINAL VALUE is [84] corresponding to this expression ['(100 - (6 + 10))']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [100, 16]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((6 + 10) - 100)']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [100, 16]
+  ------  Number(s) become(s) [1600] corresponding to the following expression(s) ['(100 * (6 + 10))']
+  ---------  FINAL VALUE is [1600] corresponding to this expression ['(100 * (6 + 10))']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [100, 16]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(100 / (6 + 10))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [100, 16]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((6 + 10) / 100)']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (-) to numbers of indexes (i=1,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [100, None] corresponding to the following expression(s) [100, '(6 - 10)']
+  ---  STOP. Unauthorized expression...
+  ---  Apply operation (^-) to numbers of indexes (i=1,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [100, 4] corresponding to the following expression(s) [100, '(10 - 6)']
+  ------  APPROXIMATE SOLUTION : 100 = 100
+  ------  Current number(s) [100, 4] corresponding to the following expression(s) [100, '(10 - 6)']
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [100, 4]
+  ------  Number(s) become(s) [104] corresponding to the following expression(s) ['(100 + (10 - 6))']
+  ---------  EXACT SOLUTION : (100 + (10 - 6)) = 104
+  ---------  FINAL VALUE is [104] corresponding to this expression ['(100 + (10 - 6))']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [100, 4]
+  ------  Number(s) become(s) [96] corresponding to the following expression(s) ['(100 - (10 - 6))']
+  ---------  FINAL VALUE is [96] corresponding to this expression ['(100 - (10 - 6))']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [100, 4]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((10 - 6) - 100)']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [100, 4]
+  ------  Number(s) become(s) [400] corresponding to the following expression(s) ['(100 * (10 - 6))']
+  ---------  FINAL VALUE is [400] corresponding to this expression ['(100 * (10 - 6))']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [100, 4]
+  ------  Number(s) become(s) [25] corresponding to the following expression(s) ['(100 / (10 - 6))']
+  ---------  FINAL VALUE is [25] corresponding to this expression ['(100 / (10 - 6))']
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [100, 4]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((10 - 6) / 100)']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (*) to numbers of indexes (i=1,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [100, 60] corresponding to the following expression(s) [100, '(6 * 10)']
+  ------  APPROXIMATE SOLUTION : 100 = 100
+  ------  Current number(s) [100, 60] corresponding to the following expression(s) [100, '(6 * 10)']
+  ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [100, 60]
+  ------  Number(s) become(s) [160] corresponding to the following expression(s) ['(100 + (6 * 10))']
+  ---------  FINAL VALUE is [160] corresponding to this expression ['(100 + (6 * 10))']
+  ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [100, 60]
+  ------  Number(s) become(s) [40] corresponding to the following expression(s) ['(100 - (6 * 10))']
+  ---------  FINAL VALUE is [40] corresponding to this expression ['(100 - (6 * 10))']
+  ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [100, 60]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((6 * 10) - 100)']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (*) to numbers of indexes (i=0,j=1) in [100, 60]
+  ------  Number(s) become(s) [6000] corresponding to the following expression(s) ['(100 * (6 * 10))']
+  ---------  FINAL VALUE is [6000] corresponding to this expression ['(100 * (6 * 10))']
+  ------  Apply operation (/) to numbers of indexes (i=0,j=1) in [100, 60]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(100 / (6 * 10))']
+  ------  STOP. Unauthorized expression...
+  ------  Apply operation (^/) to numbers of indexes (i=0,j=1) in [100, 60]
+  ------  Number(s) become(s) [None] corresponding to the following expression(s) ['((6 * 10) / 100)']
+  ------  STOP. Unauthorized expression...
+  ---  Apply operation (/) to numbers of indexes (i=1,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [100, None] corresponding to the following expression(s) [100, '(6 / 10)']
+  ---  STOP. Unauthorized expression...
+  ---  Apply operation (^/) to numbers of indexes (i=1,j=2) in [100, 6, 10]
+  ---  Number(s) become(s) [100, None] corresponding to the following expression(s) [100, '(10 / 6)']
+  ---  STOP. Unauthorized expression...
+
+  >>> ALL EXACT SOLUTIONS
+  ---------DEBUG---------
+  SOLUTION | SIMPLIFIED EXPRESSION | EXPRESSION TREE
+  (100 + (10 - 6)) = 104 | (-1)*6 + 10 + 100 | Add(Mul(Integer(-1), Integer(6)), Integer(10), Integer(100))
+  ((100 + 10) - 6) = 104 | (-1)*6 + 10 + 100 | Add(Mul(Integer(-1), Integer(6)), Integer(10), Integer(100))
+  ((100 - 6) + 10) = 104 | (-1)*6 + 10 + 100 | Add(Mul(Integer(-1), Integer(6)), Integer(10), Integer(100))
+  --------/DEBUG---------
+  (100 + (10 - 6)) = 104
+  ((100 + 10) - 6) = 104
+  ((100 - 6) + 10) = 104
+
+  >>> ALL APPROXIMATE SOLUTIONS
+  ---------DEBUG---------
+  SOLUTION | SIMPLIFIED EXPRESSION | EXPRESSION TREE
+  (100 + 6) = 106 | 6 + 100 | Add(Integer(6), Integer(100))
+  100 = 100 | 100 | Integer(100)
+  --------/DEBUG---------
+  (100 + 6) = 106
+  100 = 100
+  ```
+</details><br />
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -197,7 +573,7 @@ Verbose level for logging
   - `2` is SPAM mode, describe every single step of the algorithm and enable DEBUG mode, very useful when trying to visualize how the solver works but not very practical. 
   - Be careful when entering SPAM mode since a huge amount of logs will be generated. Solver won't be able to complete the task within reasonable time unless it has be given a very small set of numbers.
   - By default, the level is 0. Only ouputs are printed, everything else is hidden behind the curtain.
-</details>
+</details><br />
 
 ---
 <!-- LICENSE -->
