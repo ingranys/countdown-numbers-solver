@@ -222,13 +222,15 @@ $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v
   <summary>:heavy_plus_sign: See ouput</summary>
   
   ```
+  
   >>> PARAMETERS
   Input number(s) : [100, 6, 10].
   The first 6 number(s) will be considered.
   The goal is to reach 104 using some numbers.
   We are looking for exact and approximate solutions (tolerance is 5).
   We will display all solutions, even duplicates (operations order will differ).
-  SPAM mode has been enabled!
+  DEBUG mode has been enabled.
+  !!!SPAM mode has been enabled!!!
 
   ---------DEBUG---------
   Technical details about args :
@@ -245,11 +247,11 @@ $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v
   >>> START NUMBERS [100, 6, 10]
 
   >>> TARGET 104
-  ---  APPROXIMATE SOLUTION : 100 = 100
+  ---  APPROXIMATE SOLUTION FOUND : 100 = 100
   ---  Current number(s) [100, 6, 10] corresponding to the following expression(s) [100, 6, 10]
   ---  Apply operation (+) to numbers of indexes (i=0,j=1) in [100, 6, 10]
   ---  Number(s) become(s) [106, 10] corresponding to the following expression(s) ['(100 + 6)', 10]
-  ------  APPROXIMATE SOLUTION : (100 + 6) = 106
+  ------  APPROXIMATE SOLUTION FOUND : (100 + 6) = 106
   ------  Current number(s) [106, 10] corresponding to the following expression(s) ['(100 + 6)', 10]
   ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [106, 10]
   ------  Number(s) become(s) [116] corresponding to the following expression(s) ['((100 + 6) + 10)']
@@ -274,7 +276,7 @@ $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v
   ------  Current number(s) [94, 10] corresponding to the following expression(s) ['(100 - 6)', 10]
   ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [94, 10]
   ------  Number(s) become(s) [104] corresponding to the following expression(s) ['((100 - 6) + 10)']
-  ---------  EXACT SOLUTION : ((100 - 6) + 10) = 104
+  ---------  EXACT SOLUTION FOUND : ((100 - 6) + 10) = 104
   ---------  FINAL VALUE is [104] corresponding to this expression ['((100 - 6) + 10)']
   ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [94, 10]
   ------  Number(s) become(s) [84] corresponding to the following expression(s) ['((100 - 6) - 10)']
@@ -329,7 +331,7 @@ $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v
   ---------  FINAL VALUE is [116] corresponding to this expression ['((100 + 10) + 6)']
   ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [110, 6]
   ------  Number(s) become(s) [104] corresponding to the following expression(s) ['((100 + 10) - 6)']
-  ---------  EXACT SOLUTION : ((100 + 10) - 6) = 104
+  ---------  EXACT SOLUTION FOUND : ((100 + 10) - 6) = 104
   ---------  FINAL VALUE is [104] corresponding to this expression ['((100 + 10) - 6)']
   ------  Apply operation (^-) to numbers of indexes (i=0,j=1) in [110, 6]
   ------  Number(s) become(s) [None] corresponding to the following expression(s) ['(6 - (100 + 10))']
@@ -414,7 +416,7 @@ $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v
   ---  STOP. Unauthorized expression...
   ---  Apply operation (+) to numbers of indexes (i=1,j=2) in [100, 6, 10]
   ---  Number(s) become(s) [100, 16] corresponding to the following expression(s) [100, '(6 + 10)']
-  ------  APPROXIMATE SOLUTION : 100 = 100
+  ------  APPROXIMATE SOLUTION FOUND : 100 = 100
   ------  Current number(s) [100, 16] corresponding to the following expression(s) [100, '(6 + 10)']
   ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [100, 16]
   ------  Number(s) become(s) [116] corresponding to the following expression(s) ['(100 + (6 + 10))']
@@ -439,11 +441,11 @@ $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v
   ---  STOP. Unauthorized expression...
   ---  Apply operation (^-) to numbers of indexes (i=1,j=2) in [100, 6, 10]
   ---  Number(s) become(s) [100, 4] corresponding to the following expression(s) [100, '(10 - 6)']
-  ------  APPROXIMATE SOLUTION : 100 = 100
+  ------  APPROXIMATE SOLUTION FOUND : 100 = 100
   ------  Current number(s) [100, 4] corresponding to the following expression(s) [100, '(10 - 6)']
   ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [100, 4]
   ------  Number(s) become(s) [104] corresponding to the following expression(s) ['(100 + (10 - 6))']
-  ---------  EXACT SOLUTION : (100 + (10 - 6)) = 104
+  ---------  EXACT SOLUTION FOUND : (100 + (10 - 6)) = 104
   ---------  FINAL VALUE is [104] corresponding to this expression ['(100 + (10 - 6))']
   ------  Apply operation (-) to numbers of indexes (i=0,j=1) in [100, 4]
   ------  Number(s) become(s) [96] corresponding to the following expression(s) ['(100 - (10 - 6))']
@@ -462,7 +464,7 @@ $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v
   ------  STOP. Unauthorized expression...
   ---  Apply operation (*) to numbers of indexes (i=1,j=2) in [100, 6, 10]
   ---  Number(s) become(s) [100, 60] corresponding to the following expression(s) [100, '(6 * 10)']
-  ------  APPROXIMATE SOLUTION : 100 = 100
+  ------  APPROXIMATE SOLUTION FOUND : 100 = 100
   ------  Current number(s) [100, 60] corresponding to the following expression(s) [100, '(6 * 10)']
   ------  Apply operation (+) to numbers of indexes (i=0,j=1) in [100, 60]
   ------  Number(s) become(s) [160] corresponding to the following expression(s) ['(100 + (6 * 10))']
@@ -492,13 +494,13 @@ $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v
   >>> ALL EXACT SOLUTIONS
   ---------DEBUG---------
   SOLUTION | SIMPLIFIED EXPRESSION | EXPRESSION TREE
+  ((100 - 6) + 10) = 104 | (-1)*6 + 10 + 100 | Add(Mul(Integer(-1), Integer(6)), Integer(10), Integer(100))
   (100 + (10 - 6)) = 104 | (-1)*6 + 10 + 100 | Add(Mul(Integer(-1), Integer(6)), Integer(10), Integer(100))
   ((100 + 10) - 6) = 104 | (-1)*6 + 10 + 100 | Add(Mul(Integer(-1), Integer(6)), Integer(10), Integer(100))
-  ((100 - 6) + 10) = 104 | (-1)*6 + 10 + 100 | Add(Mul(Integer(-1), Integer(6)), Integer(10), Integer(100))
   --------/DEBUG---------
+  ((100 - 6) + 10) = 104
   (100 + (10 - 6)) = 104
   ((100 + 10) - 6) = 104
-  ((100 - 6) + 10) = 104
 
   >>> ALL APPROXIMATE SOLUTIONS
   ---------DEBUG---------
@@ -527,12 +529,11 @@ For more information about options, **see details below**.
 <details>
   <summary>:heavy_plus_sign: Details</summary>
   
-  
 **Numbers to be used**
 * `-n` (or `--numbers`):  &nbsp;
 Numbers to be used to reach target.
   - According to the game rules all values must be in {1,2,3,4,5,6,7,8,9,10,25,50,75,100}.
-  - By default, values are generated randomly.
+  - By default, values are generated randomly. We first select between zero and four values in the large set {25,50,75,100} and then we select values in the small set {1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10} to make six numbers in total.
 * `--size`:               &emsp;&emsp;&emsp;&emsp;&emsp;
 Maximum number or values to be used.
   - Serves as protection to prevent runtime error.
@@ -582,7 +583,47 @@ Verbose level for logging
   - `2` is SPAM mode, describe every single step of the algorithm and enable DEBUG mode, very useful when trying to visualize how the solver works but not very practical. 
   - Be careful when entering SPAM mode since a huge amount of logs will be generated. Solver won't be able to complete the task within reasonable time unless it has be given a very small set of numbers.
   - By default, the level is 0. Only ouputs are printed, everything else is hidden behind the curtain.
+
 </details><br />
+
+For a quick reminder, **display help menu**.
+```
+$ python3 countdown.py  -h
+```
+
+<details>
+  <summary>:heavy_plus_sign: Help menu</summary>
+  
+  ```
+  usage: countdown.py [-h] [-n [[...]]] [--size [3..10]] [-u [all|some]]
+                    [-t [100..999]] [-s [approximate|exact]]
+                    [--tolerance [1..10]] [-o [all|unique]] [-v [0|1|2]]
+
+  Countdown numbers solver.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    -n [ [ ...]], --numbers [ [ ...]]
+                          numbers to be used to reach target, must be in
+                          [1|2|3|4|5|6|7|8|9|10|25|50|75|100] (default is
+                          random)
+    --size [3..10]        maximum number or values to be used (default is 6)
+    -u [all|some], --use [all|some]
+                          rule for using numbers (default is 'some')
+    -t [100..999], --target [100..999]
+                          target value (default is random)
+    -s [approximate|exact], --solutions [approximate|exact]
+                          type of authorized answers (default is 'exact')
+    --tolerance [1..10]   tolerance range for approximate solutions (default is
+                          10)
+    -o [all|unique], --output [all|unique]
+                          solutions to output (default is 'unique')
+    -v [0|1|2], --verbose [0|1|2]
+                          verbose level for logging (default is 0)
+  ```
+    
+</details><br />  
+
 
 ---
 <!-- LICENSE -->
