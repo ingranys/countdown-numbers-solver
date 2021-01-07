@@ -9,6 +9,17 @@ def output(values,displayname='',output='unique',debug=False):
     # output all solutions when required > EASY!
     if output.upper() == 'ALL':
         print('\n>>> ALL {0}'.format(displayname.upper()))
+        # more info when debug mode is enabled
+        ## SPOILER : we heavily rely on sympy librairies!
+        if debug:
+            print('---------DEBUG---------')
+            print('{0} | {1}'.format('SOLUTION','SIMPLIFIED EXPRESSION'))
+            # remove unnecessary brackets and keep right-hand side only
+            simplified_expressions = [sympify(value.split(" =", 1)[0],evaluate=False) for value in values]
+            for i in range(len(simplified_expressions)):
+                print('{0} | {1}'.format(values[i],simplified_expressions[i]))
+            print('--------/DEBUG---------')
+
         # verify if empty        
         if values:   
             for value in values:
