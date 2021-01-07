@@ -1,6 +1,13 @@
 # countdown-numbers-solver
 
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)]
+
+<!-- BADGES -->
+<!-- Badges are generated dynamically using shield.io with static parameters
+URL endpoint is https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR> 
+-->
+[![license: GPLv3](https://img.shields.io/badge/licence-GPLv3-orange)](https://www.gnu.org/licenses/gpl-3.0)
+[![python: 3.0](https://img.shields.io/badge/python-3.0-blue)](https://www.python.org/)
+[![release version](https://img.shields.io/badge/release-v0.3.0-green)](https://github.com/ingranys/countdown-numbers-solver)
 
 A Python implementation of a solver for [Countdown Numbers Game, ](https://en.wikipedia.org/wiki/Countdown_(game_show)#Numbers_round) including a wide variety of options.
 
@@ -207,7 +214,7 @@ $ python3 countdown.py -n 25 100 1 7 1 5 -t 563 -v 1
   ```
 </details><br />
 
-Run script on a very simple example and enable SPAM mode to investigate how the solver works
+Run script on a very simple example and **enable SPAM mode to investigate how the solver works**.
 ```
 $ python3 countdown.py -n 100 6 10 -t 104 -s approximate --tolerance 5 -o all -v 2
 ```
@@ -513,7 +520,9 @@ $ python3 countdown.py  [-h] [-n [[...]]] [--size [3..10]] [-u [all|some]]
                         [--tolerance [1..10]] [-o [all|unique]] [-v [0|1|2]]
 
 ```
-The script is run via the commant-line. Many options are available but the solver can be executed without providing any (will use default values instead).
+The script is run via the command-line. Many options are available but the solver can be executed without providing any (will use default values instead).
+
+For more information about options, **see details below**.
 
 <details>
   <summary>:heavy_plus_sign: Details</summary>
@@ -579,13 +588,15 @@ Verbose level for logging
 <!-- LICENSE -->
 ## License :scroll:
 
-Distributed under the GNU General Public License v3.0. See `LICENSE`[:link:](https://github.com/ingranys/countdown-numbers-solver/blob/main/LICENSE) for more information.
+Distributed under the GNU General Public License v3.0. 
+
+See `LICENSE`[:link:](https://github.com/ingranys/countdown-numbers-solver/blob/main/LICENSE) for more information.
 
 
 <!-- CONTACT -->
 ## Contact :handshake:
 
-Mustapha Gaies - [@ingranys](https://github.com/ingranys) - ingranys@protonmail.com
+**Mustapha Gaies** - [@ingranys](https://github.com/ingranys) - ingranys@protonmail.com
 
 Project Link: [https://github.com/ingranys/countdown-numbers-solver](https://github.com/ingranys/countdown-numbers-solver)
 
@@ -593,10 +604,11 @@ Project Link: [https://github.com/ingranys/countdown-numbers-solver](https://git
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements :pray:
 * [DataGenetics - Countdown Game Show](https://datagenetics.com/blog/august32014/index.html)
-* [James Stanley Practice](https://incoherency.co.uk/countdown/practice/#numbers)
-* [James Stanley Sovler](https://incoherency.co.uk/countdown/) 
+* [James Stanley - Countdown Practice](https://incoherency.co.uk/countdown/practice/#numbers)
+* [James Stanley - Countdown Sovler](https://incoherency.co.uk/countdown/) 
 * [Github - cmdouglas/countdown_numbers](https://github.com/cmdouglas/countdown_numbers)
 * [Github - cawhitworth/countdown.py](https://github.com/cawhitworth/countdown.py)
 * [Github - othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template/edit/master/README.md)
 * [Github - https://github.com/ikatyang/emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet)
 * [Github - pierrejoubert73/markdown-details-collapsible.md](https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab)
+* [Github - Shields.io](https://github.com/badges/shields)
