@@ -1,13 +1,17 @@
-# countdown-numbers-solver
+## Countdown Numbers Solver
 
-
-<!-- BADGES -->
-<!-- Badges are generated dynamically using shield.io with static parameters
-URL endpoint is https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR> 
+  
+<!-- PROJECT SHIELDS -->
+<!-- Shields are generated dynamically using shield.io with static parameters
+URL endpoint is https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>
+Emoji characters are also supported as <LABEL> or <MESSAGE>
+Go to https://apps.timwhitlock.info/emoji/tables/unicode and find Bytes (UTF-8) for your emoji, replace "\x" by "%" and use as <LABEL> or <MESSAGE>
+Example for smiling face : (Bytes UTF-8) \xF0\x9F\x98\x83 > (<MESSAGE>) %F0%9F%98%83 
 -->
 [![license: GPLv3](https://img.shields.io/badge/licence-GPLv3-orange)](https://www.gnu.org/licenses/gpl-3.0)
 [![python: 3.0](https://img.shields.io/badge/python-3.0-blue)](https://www.python.org/)
 [![release version](https://img.shields.io/badge/release-v0.3.0-green)](https://github.com/ingranys/countdown-numbers-solver)
+[![maintened](https://img.shields.io/badge/maintened-%E2%9C%94-green)](https://github.com/ingranys/countdown-numbers-solver/commits/)
 
 A Python implementation of a solver for [Countdown Numbers Game, ](https://en.wikipedia.org/wiki/Countdown_(game_show)#Numbers_round) including a wide variety of options.
 
@@ -21,6 +25,24 @@ Want to have fun? [:point_right:Play the game:point_left:](https://incoherency.c
 
 Want to get a closer look at the rules and approaches to solve? [:point_right:See blog article:point_left:](https://datagenetics.com/blog/august32014/index.html)
 
+
+<!-- TABLE OF CONTENTS -->
+<!-- Generated automatically (update when saving) using VS Code extension Markdown All in One
+-- See https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one 
+-->
+- [Countdown Numbers Solver](#countdown-numbers-solver)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Examples](#examples)
+- [Usage](#usage)
+- [Documentation](#documentation)
+  - [Changelog](#changelog)
+  - [Docstrings](#docstrings)
+  - [Comments](#comments)
+- [License :scroll:](#license-scroll)
+- [Contact :handshake:](#contact-handshake)
+- [Acknowledgements :pray:](#acknowledgements-pray)
 
 <!-- GETTING STARTED -->
 ## Getting Started
