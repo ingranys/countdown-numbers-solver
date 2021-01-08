@@ -624,6 +624,114 @@ $ python3 countdown.py  -h
     
 </details><br />  
 
+---
+<!-- DOCUMENTATION -->
+## Documentation
+
+### Changelog
+See `CHANGELOG`[:link:](https://github.com/ingranys/countdown-numbers-solver/blob/main/CHANGELOG).
+
+### Docstrings
+Docstrings are provided for each module and each function.
+```python
+def pickFromBigNumbers(n_desired=-1):
+    """
+    Pick as many numbers as required in the set of big numbers {25,50,75,100}.
+    Choose randomly between 0 and 4 if nothing is specified.
+
+    Args:
+        n_desired (int, optional): Number of desired numbers. Defaults to -1.
+
+    Returns:
+        list[int]: Generated list of numbers from the set of big numbers.
+    """
+```
+Example of function **documentation in IDE**.
+<details>
+  <summary>:heavy_plus_sign: See screenshot</summary>
+  <img src="https://github.com/ingranys/countdown-numbers-solver/blob/main/visuals/hover.png">
+</details><br />
+
+Example of module **documentation in console**.
+```sh
+$ python3 -c "import utils.parser;help(utils.parser)"
+```
+
+<details>
+  <summary>:heavy_plus_sign: See output</summary>
+  
+  ```
+  Help on module utils.parser in utils:
+
+  NAME
+      utils.parser - Custom parser for countdown.
+
+  DESCRIPTION
+      For more information, see README.
+
+      For usage, use help menu <python3 countdown.py -h>.
+
+      Project can be found here <https://github.com/ingranys/countdown-numbers-solver>.
+
+      This program is free software: you can redistribute it and/or modify it under
+      the terms of the GNU General Public License as published by the Free Software
+      Foundation, either version 3 of the License, or (at your option) any later
+      version.
+
+      This program is distributed in the hope that it will be useful, but WITHOUT
+      ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+      FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+      You should have received a copy of the GNU General Public License along with
+      this program. If not, see <http://www.gnu.org/licenses/>.
+
+  FUNCTIONS
+      parse()
+          Parse given arguments according to countdown specifications.
+          - Defines arguments names.
+          - Verify argument type and limitation on number of values.
+          - Verify that values are contained in given choices.
+          - Set argument to default when no value is given.
+          - Provide usage and help menu.
+
+          Returns:
+              argparse.Namespace: Object containing parsed arguments.
+
+  DATA
+      __contact__ = 'ingranys@protonmail.com'
+      __copyright__ = 'Copyright 2021, Mustapha Gaies, Toulouse (France)'
+      __deprecated__ = False
+      __email__ = 'ingranys@protonmail.com'
+      __license__ = 'GPLv3'
+      __maintainer__ = 'developer'
+      __status__ = 'Production'
+
+  VERSION
+      0.4.0
+
+  DATE
+      2021/01/07
+
+  AUTHOR
+      ingranys
+
+  FILE
+      /user/Downloads/countdown/utils/parser.py
+  ``` 
+</details><br />
+
+
+
+### Comments
+Single-Line comments are provided for better understanding.
+```python
+# get numbers and crop to size
+if not numbers:
+    numbers = pick(n_numbers=SIZE)
+else:
+    numbers = numbers[:SIZE]
+```
+<br />  
 
 ---
 <!-- LICENSE -->
@@ -653,3 +761,5 @@ Project Link: [https://github.com/ingranys/countdown-numbers-solver](https://git
 * [Github - https://github.com/ikatyang/emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet)
 * [Github - pierrejoubert73/markdown-details-collapsible.md](https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab)
 * [Github - Shields.io](https://github.com/badges/shields)
+* [Github - NicolasBizzozzero/comprehensive_header](https://gist.github.com/NicolasBizzozzero/6d4ca63f8482a1af99b0ed022c13b041)
+* [StackOverflow - Simple changelog builder](https://stackoverflow.com/questions/40865597/generate-changelog-from-commit-and-tag)
