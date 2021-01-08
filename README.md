@@ -624,12 +624,13 @@ $ python3 countdown.py  -h
     
 </details><br />  
 
+
 ---
 <!-- DOCUMENTATION -->
 ## Documentation
 
 ### Changelog
-See `CHANGELOG`[:link:](https://github.com/ingranys/countdown-numbers-solver/blob/main/CHANGELOG).
+See `CHANGELOG`[:link:](https://github.com/ingranys/countdown-numbers-solver/blob/main/CHANGELOG.md).
 
 ### Docstrings
 Docstrings are provided for each module and each function.
@@ -720,8 +721,6 @@ $ python3 -c "import utils.parser;help(utils.parser)"
   ``` 
 </details><br />
 
-
-
 ### Comments
 Single-Line comments are provided for better understanding.
 ```python
@@ -732,6 +731,7 @@ else:
     numbers = numbers[:SIZE]
 ```
 <br />  
+
 
 ---
 <!-- LICENSE -->
