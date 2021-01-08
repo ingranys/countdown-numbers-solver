@@ -1,3 +1,11 @@
+## v0.4.0 (2021-01-08)
+
+*  Handle errors (ValueError) [View](https://github.com/ingranys/countdown-numbers-solver/commit/bed889934a961cf7c85f7b9729ada0f99f3a3b4d)
+*  Update solver.py (minor update to spam messages) [View](https://github.com/ingranys/countdown-numbers-solver/commit/797a9a36efaf484a68582f5d1fe3fb1472a36314)
+*  Update all files, add meaningful comments (docstring) [View](https://github.com/ingranys/countdown-numbers-solver/commit/309905e19f2639ad5a758b7364e21205dacf5160)
+*  Add changelog-builder.sh and add newly generated CHANGELOG.md. [View](https://github.com/ingranys/countdown-numbers-solver/commit/d0d74d6d2d6985f8c7b45fff3df63e75f59f9f71)
+
+
 ## v0.3.0 (2021-01-07)
 
 *  Make --help menu more readable. [View](https://github.com/ingranys/countdown-numbers-solver/commit/134c21b51977c87af09f9975dd19ecf79cc777bb)
