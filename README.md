@@ -804,10 +804,10 @@ Hence, ![](https://latex.codecogs.com/gif.latex?%7B%20T%28n%29%3Dm%5En%20%5Ccdot
 
 For large values of `n`, time-complexity for this algorithm grows as ![](https://latex.codecogs.com/gif.latex?%7B%5Cmathcal%7BO%7D%28m%5En%20%5Ccdot%20n%21%5E2%29%7D). \
 We end up with **factorial complexity**... This is the danger zone :scream:!
+
+Luckily for Countdown Numbers, we are limited to 6 numbers. **This is manageable in practice**.
+
 > **NOTE** : This is a example of brute-force search, very similar to the naive solution for [the travelling salesman problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem#Computing_a_solution).
-
-Luckily for Countdown Numbers, we are limited to 6 numbers. This is manageable in practice.
-
 
 ### Optimisations
 
