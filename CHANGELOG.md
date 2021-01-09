@@ -1,3 +1,14 @@
+## v0.4.2 (2021-01-09)
+
+*  Update solver documentation. [View](https://github.com/ingranys/countdown-numbers-solver/commit/d77cc49b6514c5546c12e11adc653f8614d5d751)
+
+
+## v0.4.1 (2021-01-09)
+
+*  Update CHANGELOG.md [View](https://github.com/ingranys/countdown-numbers-solver/commit/d759535787ed6d850f6c3ac011bb271840431fb1)
+*  Remove unwanted error. [View](https://github.com/ingranys/countdown-numbers-solver/commit/6bf47931f6158df88f23073b1f9df741d640e0a8)
+
+
 ## v0.4.0 (2021-01-08)
 
 *  Handle errors (ValueError) [View](https://github.com/ingranys/countdown-numbers-solver/commit/bed889934a961cf7c85f7b9729ada0f99f3a3b4d)
