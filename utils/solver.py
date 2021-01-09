@@ -66,9 +66,6 @@ def check(numbers,expressions,target,solutions,approximations,tolerance=10,use='
         use (str, optional): Rule for numbers to be used. Defaults to 'some'.
         verbose (bool, optional): Enable DEBUG mode. Defaults to False.
         stage (str, optional): Log level ('--- ', '------ ', '--------- ' and so on). Defaults to ''.
-
-    Raises:
-        ValueError: In case that unexpected argument value is encountered.
     """
 
     # enforce rule on number usage before checking numbers for a potential solution
@@ -96,9 +93,11 @@ def check(numbers,expressions,target,solutions,approximations,tolerance=10,use='
                 print('{0} APPROXIMATE SOLUTION FOUND : {1}'.format(stage,approximation)) if verbose else False
 
 
-# most of the job is done here
 def recurse(numbers,expressions,target,solutions,approximations,tolerance=10,use='some',verbose=False,stage=''):
     """
+    Main function for the solver, most of the algorithm is implemented here.
+    -Iterate through every unique pairs of elements in input numbers and apply operations all possible operations. 
+    -Make recursive call on the newly generated values.
 
     Args:
         numbers (list[int]): List of input numbers to used.
