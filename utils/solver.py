@@ -94,11 +94,6 @@ def check(numbers,expressions,target,solutions,approximations,tolerance=10,use='
                 approximation = '{0} = {1}'.format(expressions[approx_index],numbers[approx_index])
                 approximations.append(approximation)
                 print('{0} APPROXIMATE SOLUTION FOUND : {1}'.format(stage,approximation)) if verbose else False
-    
-    else:
-        # unexpected value for use argument (should be 'some' or 'all')
-        raise ValueError('Unexpected value for the argument <use> : {0}'.format(use))
-
 
 
 # most of the job is done here
