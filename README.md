@@ -668,28 +668,27 @@ We iterate through every possible pair of elements in the list : `[100 25]`, `[1
 <img src="https://github.com/ingranys/countdown-numbers-solver/blob/main/visuals/iterate.gif">
 
 For a given pair of elements (a,b) we perform all possible operations `(a+b)` `(a-b)` `(a*b)` `(a/b)`. \
-A new list of numbers and a new list of expressions are generated for each operation, where `a` and `b` are replaced by the operation results.
+A new list of numbers and a new list of expressions are generated for each operation, where `a` and `b` are replaced by the operation results.  
+
+</br>
 
 Example :       &emsp;&emsp;
-Let's say we start with `a = 100` & `b = 25` from `n = [100 25 4 7 2] <> expr = [100 25 4 7 2])`. \
-Operations give, \
-`(a+b)` >> `n+ = [125 4 7 2] <> expr+ = [(100+25) 4 7 2])` \
-`(a-b)` >> `n- = [75 4 7 2] <> expr- = [(100-25) 4 7 2])` \
-`(a*b)` >> `n* = [2500 4 7 2] <> expr* = [(100*25) 4 7 2])` \
-`(a/b)` >> `n/ = [4 4 7 2] <> expr/ = [(100/25) 4 7 2])` 
+Let's say we start with `a = 100` & `b = 25` from `n = [100 25 4 7 2]`and `expr = [100 25 4 7 2])`.
+<p align="left">
+  <img src="https://github.com/ingranys/countdown-numbers-solver/blob/main/visuals/operations1.gif">
+</p><br/ >
 
 We now start all over and repeat the same steps with every of the newly generated lists : `n+ = [125 4 7 2]`, `n- = [75 4 7 2]`, `n* = [2500 4 7 2]`, `n/ = [4 4 7 2]`.
 
 Example :       &emsp;&emsp;
-Let's say we start again with ̀`n* = [2500 4 7 2]`. First pair of elements is `a = 2500` & `b = 4`. \
-Next step will be, \
-`(a+b)` >> `n*+ = [2504 7 2] <> expr*+ = [((100+25)+4) 4 7 2])` \
-`(a-b)` >> `n*- = [2496 7 2] <> expr*- = [((100-25)-4) 7 2])` \
-`(a*b)` >> `n** = [10000 7 2] <> expr** = [((100*25)*4) 7 2])` \
-`(a/b)` >> `n*/ = [625 7 2] <> expr*/ = [((100/25)/4) 7 2])`
+For next step, we start again with ̀`n* = [2500 4 7 2]`. First pair of elements will be `a = 2500` & `b = 4`.
+<p align="left">
+  <img src="https://github.com/ingranys/countdown-numbers-solver/blob/main/visuals/operations2.gif">
+</p><br/ >
 
 And so on...
-<br />
+
+</br>
 
 At each step the list of values shrinks (-1 in size) and the list of expressions gets a little more complex (add one operation).
 
@@ -713,7 +712,10 @@ To do so, we use **Expression Trees** as defined in `sympy` library [:link:](htt
 Exemple :       &emsp;&emsp;
 Let's consider the expression `[(3/1)*2+4]`. \
 The corresponding Expression Tree is.
-<img src="https://github.com/ingranys/countdown-numbers-solver/blob/main/visuals/tree.jpeg" height="350">
+
+<p align="left">
+  <img src="https://github.com/ingranys/countdown-numbers-solver/blob/main/visuals/tree.jpeg" height="250">
+</p>
 
 > **NOTE** : `sympy` generates Expression Trees in such a way that operations in expression are rearranged alway in the same manner. \
 > This is very useful here because expressions that are "equivalent" will have the same Expression Tree regardless og operations order.
@@ -789,12 +791,18 @@ def recurse(numbers,target):
 
 Let's call **T(n) the number of operations** to execute `recurse()` function on a set of size `n`.
 
-We have `T(1)=m (1)` and `T(n)=n*n*m*T(n-1) (2)`. \
-Combine `(1)` & `(2)` we get  `T(n)=(n*n*m)*((n-1)*(n-1)*m)*[...]*(2*2*m)*T(1)`. Hence, `T(n)=(m^n)*n!*n!`.
 
-[comment]: # (We <http://latex.codecogs.com> to generate gif from latex on the fly.)
-For large values of n, time-complexity for this algorithm grows as ![](https://latex.codecogs.com/gif.latex?%5Cmathcal%7BO%7D%28m%20%5Ccdot%20%28n%21%29%5E%7B2%7D%29).
+<!-- We use http://latex.codecogs.com to generate gif from latex on the fly.
+-- Original text :
+-- "We have `T(1)=m (1)` and `T(n)=n*n*m*T(n-1) (2)`.
+-- Combine `(1)` & `(2)` we get  `T(n)=(n*n*m)*((n-1)*(n-1)*m)*[...]*(2*2*m)*T(1)`. Hence, `T(n)=(m^n)*n!*n!`.
+-- For large values of n, time-complexity for this algorithm grows as O((m^n)*n!^2)."
+-->
+We have `(1)` ![](https://latex.codecogs.com/gif.latex?%7BT%281%29%20%3D%201%20%5Ccdot%201%20%5Ccdot%20m%20%7D) and `(2)` ![](https://latex.codecogs.com/gif.latex?%7BT%28n%29%3Dn%20%5Ccdot%20n%20%5Ccdot%20m%20%5Ccdot%20T%28n-1%29%20%7D). \
+Combine `(1)` & `(2)` we get  ![](https://latex.codecogs.com/gif.latex?%7BT%28n%29%3D%28n%20%5Ccdot%20n%20%5Ccdot%20m%29*%28%28n-1%29%20%5Ccdot%20%28n-1%29%20%5Ccdot%20m%29*%5B...%5D*%282%20%5Ccdot%202%20%5Ccdot%20m%29*%281%20%5Ccdot%201%20%5Ccdot%20T%281%29%29%7D). \
+Hence, ![](https://latex.codecogs.com/gif.latex?%7B%20T%28n%29%3Dm%5En%20%5Ccdot%20n%21%20%5Ccdot%20n%21%20%7D).
 
+For large values of `n`, time-complexity for this algorithm grows as ![](https://latex.codecogs.com/gif.latex?%7B%5Cmathcal%7BO%7D%28m%5En%20%5Ccdot%20n%21%5E2%29%7D). \
 We end up with **factorial complexity**... This is the danger zone :scream:!
 > **NOTE** : This is a example of brute-force search, very similar to the naive solution for [the travelling salesman problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem#Computing_a_solution).
 
@@ -803,9 +811,9 @@ Luckily for Countdown Numbers, we are limited to 6 numbers. This is manageable i
 
 ### Optimisations
 
-**Handle permutations** \
+**Unique pairs only** \
 With naive approach, we consider every pair of elements in a given set and apply the following basic operations `+`, `-`, `*` and `/`. \
-We can also iterate through **unique pairs only**, considering `(a,b)` and ignoring `(b,a)`) for example. \
+We can also iterate through unique pairs only, considering `(a,b)` and ignoring `(b,a)`) for example. \
 we then apply the following operations : `(a+b)`, `(a-b)`, `(b-a)`, `(a*b)`, `(a/b)`, `(b/a)`. \
 New pseudo code is. 
 ```python
@@ -853,6 +861,16 @@ def recurse():
 
 ### Changelog
 See `CHANGELOG`[:link:](https://github.com/ingranys/countdown-numbers-solver/blob/main/CHANGELOG.md).
+
+### Comments
+Single-Line comments are provided for better understanding.
+```python
+# get numbers and crop to size
+if not numbers:
+    numbers = pick(n_numbers=SIZE)
+else:
+    numbers = numbers[:SIZE]
+```
 
 ### Docstrings
 Docstrings are provided for each module and each function.
@@ -942,16 +960,6 @@ $ python3 -c "import utils.parser;help(utils.parser)"
       /user/Downloads/countdown/utils/parser.py
   ``` 
 </details><br />
-
-### Comments
-Single-Line comments are provided for better understanding.
-```python
-# get numbers and crop to size
-if not numbers:
-    numbers = pick(n_numbers=SIZE)
-else:
-    numbers = numbers[:SIZE]
-```
 
 
 <!-- LICENSE -->
