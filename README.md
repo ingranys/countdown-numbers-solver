@@ -10,10 +10,13 @@ Example for smiling face : (Bytes UTF-8) \xF0\x9F\x98\x83 > (<MESSAGE>) %F0%9F%9
 -->
 [![license: GPLv3](https://img.shields.io/badge/licence-GPLv3-orange)](https://www.gnu.org/licenses/gpl-3.0)
 [![python: 3.0](https://img.shields.io/badge/python-3.0-blue)](https://www.python.org/)
-[![release version](https://img.shields.io/badge/release-v0.3.0-green)](https://github.com/ingranys/countdown-numbers-solver)
+[![release version](https://img.shields.io/badge/release-v0.4.2-green)](https://github.com/ingranys/countdown-numbers-solver)
 [![maintened](https://img.shields.io/badge/maintened-%E2%9C%94-green)](https://github.com/ingranys/countdown-numbers-solver/commits/)
 
 A Python implementation of a solver for [Countdown Numbers Game, ](https://en.wikipedia.org/wiki/Countdown_(game_show)#Numbers_round) including a wide variety of options.
+
+> **NOTE** : This project is NOT an implementation of Countdown Numbers game. \
+> We provide a solver to find all solutions that can hit a given target using the numbers you supplied.
 
 As a reminder here is a **game demo**:
 
@@ -45,8 +48,8 @@ Want to get a closer look at the rules and approaches to solve? [:point_right:Se
   - [Optimisations](#optimisations)
 - [Documentation](#documentation)
   - [Changelog](#changelog)
-  - [Docstrings](#docstrings)
   - [Comments](#comments)
+  - [Docstrings](#docstrings)
 - [License :scroll:](#license-scroll)
 - [Contact :handshake:](#contact-handshake)
 - [Acknowledgements :pray:](#acknowledgements-pray)

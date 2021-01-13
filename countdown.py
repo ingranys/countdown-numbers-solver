@@ -25,13 +25,13 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 __author__ = "ingranys"
 __contact__ = "ingranys@protonmail.com"
 __copyright__ = "Copyright 2021, Mustapha Gaies, Toulouse (France)"
-__date__ = "2021/01/07"
+__date__ = "2021/01/13"
 __deprecated__ = False
 __email__ =  "ingranys@protonmail.com"
 __license__ = "GPLv3"
 __maintainer__ = "developer"
 __status__ = "Production"
-__version__ = "0.4.0"
+__version__ = "0.4.2"
 
 
 from utils.parser import parse
